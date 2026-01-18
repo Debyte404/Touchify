@@ -1,0 +1,58 @@
+[
+  {
+    "id": "5555",
+    "name": "Ankit Chetri",
+    "class": "3rd Year",
+    "section": "H2",
+    "status": "Present",
+    "time": "03:48:39"
+  },
+  {
+    "id": "2024001002",
+    "name": "John Doe",
+    "class": "3rd Year",
+    "section": "H2",
+    "status": "Present",
+    "time": "02:30:40"
+  },
+  {
+    "id": "2024001003",
+    "name": "Alice Smith",
+    "class": "3rd Year",
+    "section": "V1",
+    "status": "Absent",
+    "time": "-"
+  },
+  {
+    "id": "2024001004",
+    "name": "Bob Johnson",
+    "class": "3rd Year",
+    "section": "V1",
+    "status": "Absent",
+    "time": "-"
+  },
+  {
+    "id": "2024001005",
+    "name": "Charlie Brown",
+    "class": "4th Year",
+    "section": "B2",
+    "status": "Absent",
+    "time": "-"
+  },
+  {
+    "id": "2024001006",
+    "name": "David Miller",
+    "class": "4th Year",
+    "section": "B2",
+    "status": "Absent",
+    "time": "-"
+  },
+  {
+    "id": "2024001007",
+    "name": "Emma Wilson",
+    "class": "1st Year",
+    "section": "H1",
+    "status": "Absent",
+    "time": "-"
+  }
+]

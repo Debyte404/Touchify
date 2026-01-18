@@ -10,9 +10,9 @@
 #include <ArduinoJson.h>
 
 // ================== CONFIGURATION ==================
-const char* WIFI_SSID = "YOUR_WIFI_SSID";
-const char* WIFI_PASS = "YOUR_WIFI_PASSWORD";
-const char* GATEWAY_URL = "http://YOUR_GATEWAY_IP:8000/ingest/biometric";
+const char* WIFI_SSID = "Debyte";
+const char* WIFI_PASS = "123456789";
+const char* GATEWAY_URL = "http://10.46.236.234:8000/ingest/biometric";
 
 #define I2C_ADDRESS     0x3C
 #define SCREEN_WIDTH    128
@@ -33,8 +33,9 @@ char keys[ROWS][COLS] = {
   {'7', '8', '9', 'C'},
   {'*', '0', '#', 'D'}
 };
-byte rowPins[ROWS] = {32, 33, 25, 26}; 
-byte colPins[COLS] = {27, 14, 12, 13}; 
+// Pin order for reversed connectivity (C4, C3, C2, C1, R4, R3, R2, R1)
+byte rowPins[ROWS] = {13, 12, 14, 27}; 
+byte colPins[COLS] = {26, 25, 33, 32}; 
 Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
 
 // State Management
@@ -94,18 +95,20 @@ void setup() {
 void loop() {
   switch (currentMode) {
     case MENU:
-      drawMenu();
-      char key = keypad.getKey();
-      if (key == 'A') { // UP
-        menuIndex = (menuIndex - 1 + menuCount) % menuCount;
-      } else if (key == 'B') { // DOWN
-        menuIndex = (menuIndex + 1) % menuCount;
-      } else if (key == '#') { // SELECT
-        if (menuIndex == 0) currentMode = ENROLL;
-        else if (menuIndex == 1) currentMode = USE;
-        else if (menuIndex == 2) currentMode = REINIT;
-        else if (menuIndex == 3) currentMode = CLEAR_ID;
-        else if (menuIndex == 4) currentMode = CLEAR_ALL;
+      {
+        drawMenu();
+        char key = keypad.getKey();
+        if (key == 'A') { // UP
+          menuIndex = (menuIndex - 1 + menuCount) % menuCount;
+        } else if (key == 'B') { // DOWN
+          menuIndex = (menuIndex + 1) % menuCount;
+        } else if (key == '#') { // SELECT
+          if (menuIndex == 0) currentMode = ENROLL;
+          else if (menuIndex == 1) currentMode = USE;
+          else if (menuIndex == 2) currentMode = REINIT;
+          else if (menuIndex == 3) currentMode = CLEAR_ID;
+          else if (menuIndex == 4) currentMode = CLEAR_ALL;
+        }
       }
       break;
 
